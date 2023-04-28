@@ -1,0 +1,27 @@
+﻿1. A description of the control flow for the interaction of a player avatar and a bank square. Where in the code is the co-location of the two objects detected, and what happens from that point until the interaction is finished? Which functions of which objects are called and what do they do during the handling of this situation?
+
+
+The implementation of the interaction between a player and bank:
+Firstly, there is two methods of the BankSquare inherited from ActivateOnPlayer class (1) that checks if the player has merely passed on the square and not landed and (2) that has landed on the square. These fucntions uses getX() and getY() functions of the GraphObject class and checks if the player is waiting to roll to determine said functionality.
+
+
+The Bank Square checks if the the player has landed and if it’s a new player (by measuring the ticks of the player and if it has been ticking on the bank square for longer than 1). If this is the case, then the bank gives all the coins away to said player, depending on whether it’s Yoshi or peach.
+
+
+If the player has simply passed the BankSquare, it takes 5 coins only if it has more than 5 coins - calling the deductCoins(). If the player does not have more than 5 coins, it just takes whatever is left in the player class.
+
+
+Finally, there is a function that increases the tick count of the Player by one each time the play is on the BankSquare per tick, so that it doesn’t repeat taking coins.
+
+
+2. A list of all functionality that you failed to finish as well as known bugs in your classes, e.g. “I didn’t implement the Vortex class.”
+
+
+I did not implement the Vortex class and Bowser does not replace with the Dropping Square correctly.
+
+
+3. A list of assumptions you made; e.g., “It was not specified what to do in situation X, so this is what I decided to do.”
+
+
+- It was not specified if the Players should be placed above or below the baddies, beyond just saying that their depths are 1. Because it can be the case that the peach is just overlapping with the boo or something.
+- Not much else.
